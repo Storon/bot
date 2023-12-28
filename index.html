@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>چت روبات</title>
+</head>
+<body>
+    <h1>چت روبات</h1>
+    <div id="chat">
+        <input type="text" id="userInput" placeholder="سوال خود را اینجا بنویسید...">
+        <button onclick="getResponse()">ارسال</button>
+        <ul id="chatList">
+        </ul>
+    </div>
+
+    <script>
+        function getResponse() {
+            var userText = document.getElementById('userInput').value;
+            var chatList = document.getElementById('chatList');
+            var userQuestion = document.createElement('li');
+            userQuestion.textContent = 'شما: ' + userText;
+            chatList.appendChild(userQuestion);
+            
+            var botAnswer = document.createElement('li');
+            
+            // اینجا باید لاجیک برای تعیین پاسخ روبات اضافه شود
+            // مثال ساده:
+            if (userText.includes('hallo')) {
+                botAnswer.textContent = 'hallo wie gehts als gut?';
+            } else if (userText.includes('چطوری؟')) {
+                botAnswer.textContent = 'روبات: من خوبم، ممنون! شما چطور هستید؟';
+            } else {
+                botAnswer.textContent = 'روبات: متاسفم، من نمی‌فهمم.';
+            }
+
+            chatList.appendChild(botAnswer);
+
+            // پاک کردن متن وارد شده
+            document.getElementById('userInput').value = '';
+        }
+    </script>
+</body>
+</html>
